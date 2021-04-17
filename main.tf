@@ -48,11 +48,12 @@ module "s3_bucket" {
   versioning = {
     enabled = false
   }
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
+  
+  tags = var.tags
+  # tags = {
+  #   Name        = "My bucket"
+  #   Environment = "Dev"
+  # }
 
   server_side_encryption_configuration = {
     rule = {
