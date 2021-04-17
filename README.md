@@ -3,8 +3,9 @@
   - KMS key is used to encrypt bucket objects,
   - Logging is enabled, and a log bucket will be created within the main bucket,
   - Tags can be added as a variable,
-  - Versioning is enabled.
-  - A random name will be assignend to the bucket.
+  - Versioning is enabled,
+  - A random name will be assignend to the bucket,
+  - Bucket will be private.
 
 ### How to use
 - To use this module fallow the steps below:
@@ -34,5 +35,3 @@
 ### Outputs
 - Bucket name and arn,
 - Log bucket name and arn.
-
-

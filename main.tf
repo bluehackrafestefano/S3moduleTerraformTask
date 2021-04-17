@@ -46,14 +46,10 @@ module "s3_bucket" {
   attach_deny_insecure_transport_policy = true
 
   versioning = {
-    enabled = false
+    enabled = true
   }
   
   tags = var.tags
-  # tags = {
-  #   Name        = "My bucket"
-  #   Environment = "Dev"
-  # }
 
   server_side_encryption_configuration = {
     rule = {
@@ -68,19 +64,17 @@ module "s3_bucket" {
     target_bucket = module.log_bucket.this_s3_bucket_id
     target_prefix = "log/"
   }
-
 }
 
 resource "random_pet" "object_names" {
-  count = 4
-
+  count     = 4
   length    = 5
   separator = "_"
   prefix    = "learning"
 }
 
 resource "aws_s3_bucket_object" "objects" {
-  count = 4
+  count       = 4
 
   acl          = "public-read"
   key          = "${random_pet.object_names[count.index].id}.txt"
