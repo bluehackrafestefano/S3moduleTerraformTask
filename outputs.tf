@@ -1,5 +1,3 @@
-# Output declarations
-
 output "bucket_name" {
   description = "Randomly generated bucket name."
   # value       = random_pet.bucket_name.id

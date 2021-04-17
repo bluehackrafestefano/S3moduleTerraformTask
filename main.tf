@@ -39,7 +39,6 @@ module "log_bucket" {
 
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
-
   bucket = random_pet.bucket_name.id
   acl    = "private"
 
@@ -59,27 +58,8 @@ module "s3_bucket" {
       }
     }
   }
-
   logging = {
     target_bucket = module.log_bucket.this_s3_bucket_id
     target_prefix = "log/"
   }
-}
-
-resource "random_pet" "object_names" {
-  count     = 4
-  length    = 5
-  separator = "_"
-  prefix    = "learning"
-}
-
-resource "aws_s3_bucket_object" "objects" {
-  count       = 4
-
-  acl          = "public-read"
-  key          = "${random_pet.object_names[count.index].id}.txt"
-  bucket       = module.s3_bucket.this_s3_bucket_id
-  # content      = "Example object #${count.index}"
-  content      = "Bucket object #${count.index}"
-  content_type = "text/plain"
 }

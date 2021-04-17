@@ -35,3 +35,6 @@
 ### Outputs
 - Bucket name and arn,
 - Log bucket name and arn.
+
+### Source Notes
+- In this module "terraform-aws-modules/s3-bucket/aws" is used as a source.
